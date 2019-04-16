@@ -6,7 +6,7 @@ from urllib.request import urlopen
 from datetime import datetime
 from xlwt import Workbook
 
-class StockTracker:
+class NasdaqStockTracker:
     # Name and Price arrays
     prices = []
     names = []
@@ -70,7 +70,7 @@ class StockTracker:
 
         wb.save('Pricing.xls')
 
-test = StockTracker();
+test = NasdaqStockTracker();
 
 test.write_to_excel()
 
