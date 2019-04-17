@@ -4,6 +4,7 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from datetime import datetime
+from xlrd import open_workbook
 from xlwt import Workbook
 
 class NasdaqStockTracker:
@@ -54,8 +55,8 @@ class NasdaqStockTracker:
             else:
                 print(name + ": " + str(price))
 
-    # Writes the data collected from the stock price function to a excel doc
-    def write_to_excel(self):
+    # Writing to a workbook that does not exist yet
+    def create_excel(self, ws_name):
         wb = Workbook()
         ws = wb.add_sheet("page")
 
@@ -68,9 +69,25 @@ class NasdaqStockTracker:
             ws.write(i, 1, price)
             i += 1
 
+        wb.save(ws_name)
+
+    # Writes the data collected from the stock price function to a excel doc
+    def write_to_excel(self):
+        wb = open_workbook("Pricing.xls")
+        ws = wb.
+
+        # Starts from (1,0), then shifts down by column, then shifts row
+        i = 2
+        ws.write(1, 0, "Stock Name")
+        ws.write(1, 1, "Stock Price")
+        for name, price in zip(self.names, self.prices):
+            ws.write(i, 0, name)
+            ws.write(i, 1, price)
+            i += 1
+
         wb.save('Pricing.xls')
 
-test = NasdaqStockTracker();
+test = NasdaqStockTracker()
 
 test.write_to_excel()
 
