@@ -57,7 +57,7 @@ class NasdaqStockTracker:
     # Writes the data collected from the stock price function to a excel doc
     def write_to_excel(self):
         wb = Workbook()
-        ws = wb.add_sheet("")
+        ws = wb.add_sheet("page")
 
         # Starts from (1,0), then shifts down by column, then shifts row
         i = 2

@@ -1,9 +1,1 @@
-from bs4 import BeautifulSoup
-from urllib.request import urlopen
-from datetime import datetime
-from xlwt import Workbook
-
-class SecondStockTracker:
-
-    def __init__(self):
-        print() # placeholder
+# TBD on what the second project is to be. Tensorflow or Pandas
