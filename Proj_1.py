@@ -6,6 +6,7 @@ from urllib.request import urlopen
 from datetime import datetime
 from xlrd import open_workbook
 from xlwt import Workbook
+from xlutils.copy import copy as xl_copy
 
 class NasdaqStockTracker:
     # Name and Price arrays
@@ -74,8 +75,10 @@ class NasdaqStockTracker:
     # Writes the data collected from the stock price function to a excel doc
     def write_to_excel(self):
         wb = open_workbook("Pricing.xls")
-        ws = wb.
-
+        # Create new wb with same data
+        wb_copy = xl_copy(wb)
+        # Add new sheet on new wb
+        ws = wb_copy.add_sheet(self.time.strftime("%m" + "." + "%d" + "." + "%Y"))
         # Starts from (1,0), then shifts down by column, then shifts row
         i = 2
         ws.write(1, 0, "Stock Name")
@@ -85,7 +88,7 @@ class NasdaqStockTracker:
             ws.write(i, 1, price)
             i += 1
 
-        wb.save('Pricing.xls')
+        wb_copy.save('Pricing.xls')
 
 test = NasdaqStockTracker()
 
