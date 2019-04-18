@@ -92,25 +92,25 @@ class NasdaqStockTracker:
 
 # -------------------- MAIN -------------------- #
 
-test = NasdaqStockTracker()
-
-done = True
-while done:
-    print("\nWhat would you like to do?"
-          "\nEnter 1 to list price"
-          "\nEnter 2 to write prices to a new excel sheet"
-          "\nEnter 3 to create a new excel sheet"
-          "\nEnter anything else to quit")
-    cmd = input()
-    if cmd == '1':
-        test.get_stock_prices()
-    elif cmd == '2':
-        test.write_to_excel()
-    elif cmd == '3':
-        print("Please enter the name of the sheet you would like to create.")
-        sheet_name = input()
-        test.create_excel(sheet_name)
-    else:
-        print("Program Terminating....")
-        done = False
+def main()
+    test = NasdaqStockTracker()
+    done = True
+    while done:
+        print("\nWhat would you like to do?"
+              "\nEnter 1 to list price"
+              "\nEnter 2 to write prices to a new excel sheet"
+              "\nEnter 3 to create a new excel sheet"
+              "\nEnter anything else to quit")
+        cmd = input()
+        if cmd == '1':
+            test.get_stock_prices()
+        elif cmd == '2':
+            test.write_to_excel()
+        elif cmd == '3':
+            print("Please enter the name of the sheet you would like to create.")
+            sheet_name = input()
+            test.create_excel(sheet_name)
+        else:
+            print("Program Terminating....")
+            done = False
 
