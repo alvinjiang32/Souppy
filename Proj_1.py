@@ -59,7 +59,7 @@ class NasdaqStockTracker:
     # Writing to a workbook that does not exist yet
     def create_excel(self, ws_name):
         wb = Workbook()
-        ws = wb.add_sheet("page")
+        ws = wb.add_sheet("New Page")
 
         # Starts from (1,0), then shifts down by column, then shifts row
         i = 2
@@ -90,7 +90,27 @@ class NasdaqStockTracker:
 
         wb_copy.save('Pricing.xls')
 
+# -------------------- MAIN -------------------- #
+
 test = NasdaqStockTracker()
 
-test.write_to_excel()
+done = True
+while done:
+    print("\nWhat would you like to do?"
+          "\nEnter 1 to list price"
+          "\nEnter 2 to write prices to a new excel sheet"
+          "\nEnter 3 to create a new excel sheet"
+          "\nEnter anything else to quit")
+    cmd = input()
+    if cmd == '1':
+        test.get_stock_prices()
+    elif cmd == '2':
+        test.write_to_excel()
+    elif cmd == '3':
+        print("Please enter the name of the sheet you would like to create.")
+        sheet_name = input()
+        test.create_excel(sheet_name)
+    else:
+        print("Program Terminating....")
+        done = False
 
