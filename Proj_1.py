@@ -81,6 +81,7 @@ class NasdaqStockTracker:
         ws = wb_copy.add_sheet(self.time.strftime("%m" + "." + "%d" + "." + "%Y"))
         # Starts from (1,0), then shifts down by column, then shifts row
         i = 2
+        ws.write(0,0, self.time.strftime("%X"))
         ws.write(1, 0, "Stock Name")
         ws.write(1, 1, "Stock Price")
         for name, price in zip(self.names, self.prices):
@@ -92,8 +93,8 @@ class NasdaqStockTracker:
 
 # -------------------- MAIN -------------------- #
 
-def main()
-    test = NasdaqStockTracker()
+def main():
+    nst = NasdaqStockTracker()
     done = True
     while done:
         print("\nWhat would you like to do?"
@@ -103,14 +104,15 @@ def main()
               "\nEnter anything else to quit")
         cmd = input()
         if cmd == '1':
-            test.get_stock_prices()
+            nst.get_stock_prices()
         elif cmd == '2':
-            test.write_to_excel()
+            nst.write_to_excel()
         elif cmd == '3':
             print("Please enter the name of the sheet you would like to create.")
             sheet_name = input()
-            test.create_excel(sheet_name)
+            nst.create_excel(sheet_name)
         else:
             print("Program Terminating....")
             done = False
 
+main()
