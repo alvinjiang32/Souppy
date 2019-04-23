@@ -99,7 +99,7 @@ def main():
     while done:
         print("\nWhat would you like to do?"
               "\nEnter 1 to list price"
-              "\nEnter 2 to write prices to a new excel sheet"
+              "\nEnter 2 to write prices to the current excel sheet"
               "\nEnter 3 to create a new excel sheet"
               "\nEnter anything else to quit")
         cmd = input()
