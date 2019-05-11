@@ -81,7 +81,7 @@ class NasdaqStockTracker:
         ws = wb_copy.add_sheet(self.time.strftime("%m" + "." + "%d" + "." + "%Y"))
         # Starts from (1,0), then shifts down by column, then shifts row
         i = 2
-        ws.write(0,0, self.time.strftime("%X"))
+        ws.write(0, 0, self.time.strftime("%X"))
         ws.write(1, 0, "Stock Name")
         ws.write(1, 1, "Stock Price")
         for name, price in zip(self.names, self.prices):
